@@ -8,6 +8,8 @@ const forecast = require('./utils/forecast')
 //console.log(__filename)//current file name
 //console.log(path.join(__dirname, '../public'))
 const app = express()
+//In order to run this app on heroku we have to give different port than 3000 i.e for heroku it will be process.env.PORT which means getting port from env = environment variable
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -146,6 +148,6 @@ app.get('*', (req, res) => {
 
 //start the server up
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {//In order to run this app on heroku we have to give different port than 3000 i.e for heroku it will be process.env.PORT which means getting port from env = environment variable
+    console.log('Server is up on port ' + port)
 })
